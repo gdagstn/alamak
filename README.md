@@ -15,6 +15,8 @@ devtools::install_github("gdagstn/alamak")
 
 # Use
 
+You may think that in order to use `alamak` you need to know how to code. The opposite is true: not knowing how to code will let `alamak` shine in all its glory. 
+
 Wrap your call into a call to `alamak()`. If a warning or an error occurs, a Pixel Pal (patent pending) appears on the screen  and tells you what they think about you and your situation.
 
 ```
