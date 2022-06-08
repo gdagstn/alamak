@@ -47,7 +47,7 @@ You can create another Pixel Pal (patent pending) yourself! If you have a 16x16 
 
 ```
 new_pixelpal = list("crayon" = makePixelPal("path/to/picture.png"),
-                    "message" = c("The first possible message", "The second possible message", "And so on", "You know the drill"))
+                    "messages" = c("The first possible message", "The second possible message", "And so on", "You know the drill"))
 
 ```
 
