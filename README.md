@@ -1,7 +1,7 @@
 <img src="https://user-images.githubusercontent.com/21171362/172660668-a915837a-7724-4499-9bc9-52478d8fe36f.png" align="right" alt="" width="150" />
 
 # alamak
-`alamak` catches your errors and lets a pixel pal tell you all about it. 
+`alamak` catches your errors and lets a Pixel Pal (patent pending) tell you all about it. 
 
 The name comes from the Singlish/Malay expression "alamak!", which is an exclamation that follows a surprising/unsettling event, or a minor nuisance, according to the vibe.
 
