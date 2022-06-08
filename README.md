@@ -15,7 +15,7 @@ devtools::install_github("gdagstn/alamak")
 
 # Use
 
-Wrap your call into a call to `alamak()`. If a warning or an error occur, a Pixel Pal (patent pending) appears on the screen  and tells you what they think about you and your situation.
+Wrap your call into a call to `alamak()`. If a warning or an error occurs, a Pixel Pal (patent pending) appears on the screen  and tells you what they think about you and your situation.
 
 ```
 alamak(your_function(), pixelpal = "Jerry")
@@ -25,7 +25,7 @@ alamak(your_function(), pixelpal = "Jerry")
 
 `alamak` is quite dumb and should not be used in professional settings, unless that's your thing.
 
-There are 4 pixel pals available:
+There are 4 Pixel Pals (patent pending) available:
 
 **Jerry**, a parrot who doesn't like you very much:
 
