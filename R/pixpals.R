@@ -1,0 +1,55 @@
+pixpals = list()
+
+pixpals$Buster = list("crayon" = makePixPal("inst/extdata/buster.png"),
+                         "messages" = c("Hold the bus!",
+                                        "Busted!",
+                                        "When life gives you lemons, I give you",
+                                        "Whoa there cowboy!",
+                                        "How 'bout dem lemons?",
+                                        "Winner winner lemon dinner!",
+                                        "Someone is having a case of the Mondays!",
+                                        "Jet fuel doesn't melt steel bea- I mean holy guacamole!",
+                                        "Slow there kiddo!",
+                                        "\"You miss 100% of the shots you don't take\"- Wayne Gretzky -- Michael Scott\""))
+
+pixpals$Jerry = list("crayon" = makePixPal("inst/extdata/jerry.png"),
+                     "messages" = c("Squawk!",
+                                    "Sounds like you should learn to code.",
+                                    "Pathetic.",
+                                    "How many times do we need to go through this?",
+                                    "You know you will just look this up on StackOverflow, so why bother?",
+                                    "With the suprise of a grand total of zero people, here goes.",
+                                    "Amateur hour is back and it's all the rage!",
+                                    "Don't give up your day job. Unless this is your day job.",
+                                    "Hot take: maybe you shouldn't have done this.",
+                                    "Learning from your mistakes implies learning at some point.",
+                                    "I'd say I'm disappointed but I'll leave that to the school system.",
+                                    "Fail upwards, my friend!",
+                                    "Did I ever tell you I'm proud of you? No? Yeah, this is why."))
+
+pixpals$Oniji = list("crayon" = makePixPal("inst/extdata/oniji.png"),
+                     "messages" = c("A single function / Mysterious operations / It has failed again.",
+                                    "That time in Kyoto / Coding, as cherry blossom / Shelters many bugs.",
+                                    "The first reviewer / May never catch this issue / But surely I did.",
+                                    "Tracing back the source /  May reveal all the answers / Though sometimes it won't.",
+                                    "Showing just one side /  The moon is ever careful / Unlike who wrote this.",
+                                    "Solitary bee /  A quiet buzz through my orchids / Another bug shows.",
+                                    "Wandering Basho /  Observing all conventions / Would never do this.",
+                                    "Another error /  We proceed stil undeterred / Ready for failure."))
+
+
+pixpals$Lenny = list("crayon" = makePixPal("inst/extdata/lenny.png"),
+                     "messages" = c("You got this!",
+                                    "Please don't mind this pile of bones while I say GOOD ATTEMPT!",
+                                    "Don't let small mistakes distract you from your incredibly important mission!",
+                                    "I'm sure it almost never happens!",
+                                    "Blame it on the computer! You did nothing wrong!",
+                                    "Life is just a collection of happy mistakes!",
+                                    "You know how they always say kids should not be left unattended next to raptor cages? Unfair, right?",
+                                    "Feeling good about the next attempt, chief!",
+                                    "Oh no! What are the odds? If you run it again it will work!",
+                                    "I'm sure you did all you could! I'm proud of you anyway!",
+                                    "You're my best friend even if your code isn't!",
+                                    "Even the best coders in the world make mistakes, and who said you're not one of them?",
+                                    "Never give up! It makes the chase more excit- I mean, you deserve to win!",
+                                    "I'll tell you what I told the parents of those kids when the cage was left open: sometimes mistakes happen."))
