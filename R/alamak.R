@@ -72,6 +72,7 @@ makePixPal <- function(filepath) {
 #' alamak(a + 4)
 #'
 #' @importFrom crayon red
+#' @importFrom cli console_width
 #'
 #' @export
 
@@ -114,9 +115,13 @@ alamak <- function(f, pixpal = "Jerry"){
       errtype = "Warning"
       errmess = paste0(errtype, ": ", unlist(lapply(warns, function(x) x$message)))
     }
-        introMessage = paste0(strwrap(pixpal$messages[[errtype]][sample(seq_len(length(pixpal$messages[[errtype]])), size = 1)], 100), collapse = " \n")
+        pal = pixpal$crayon
 
-        errmess_wrapped = paste0(sapply(strwrap(errmess, 100), crayon::red, USE.NAMES = FALSE), collapse = "\n")
+        consolew = min(console_width() - 2 - ncol(pal), 100)
+
+        introMessage = paste0(strwrap(pixpal$messages[[errtype]][sample(seq_len(length(pixpal$messages[[errtype]])), size = 1)], consolew), collapse = " \n")
+
+        errmess_wrapped = paste0(sapply(strwrap(errmess, consolew), crayon::red, USE.NAMES = FALSE), collapse = "\n")
 
         message_to_add = unlist(strsplit(paste0(introMessage, " \n", errmess_wrapped), "\n"))
 
@@ -152,7 +157,6 @@ alamak <- function(f, pixpal = "Jerry"){
 
        finalmess_print = unlist(strsplit(paste0(finalmess, collapse = ""), split = "\n"))
 
-       pal = pixpal$crayon
        difference = length(finalmess_print) - nrow(pal)
        if(difference > 0) {
          pal = rbind(pal,

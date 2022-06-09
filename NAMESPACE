@@ -2,6 +2,7 @@
 
 export(alamak)
 export(makePixPal)
+importFrom(cli,console_width)
 importFrom(crayon,make_style)
 importFrom(crayon,red)
 importFrom(grDevices,rgb)

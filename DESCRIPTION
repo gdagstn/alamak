@@ -1,6 +1,6 @@
 Package: alamak
 Type: Package
-Title: error messages with some flair.
+Title: error messages with some flair
 Version: 0.0.900
 Author: Giuseppe D'Agostino
 Maintainer: Giuseppe D'Agostino <g.a.dagostino@gmail.com>
@@ -11,6 +11,7 @@ Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.1.2
 Imports:
+    cli,
     crayon,
     png
 Depends: 
