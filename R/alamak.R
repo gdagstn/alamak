@@ -77,13 +77,16 @@ makePixPal <- function(filepath) {
 
 alamak <- function(f, pixpal = "Jerry"){
 
-  if(pixpal %in% c("Jerry", "Lenny", "Buster", "Oniji")) {
+  if(all(class(pixpal) == "character" & pixpal %in% c("Jerry", "Lenny", "Buster", "Oniji"))) {
     pixpal = pixpals[[pixpal]]
   } else if(class(pixpal) != "list") {
     stop("Not a valid Pixel Pal! See ?makePixPal for an example.")
-  } else if(class(pixpal) == "list" & !names(pixpal) %in% c("crayon", "messages")) {
+  } else if(class(pixpal) == "list" &
+            !all(names(pixpal) %in% c("crayon", "messages"))) {
     stop("Not a valid Pixel Pal! Needs \"crayon\" and \"messages\" elements. See ?makePixPal for an example")
-  } else if(class(pixpal) == "list" & names(pixpal) %in% c("crayon", "messages") & !names(pixpal)$messages %in% c("Error", "Warning")) {
+  } else if(class(pixpal) == "list" &
+            all(names(pixpal) %in% c("crayon", "messages")) &
+            !all(names(pixpal$messages) %in% c("Error", "Warning"))) {
     stop("Not a valid Pixel Pal! Needs \"Error\" and \"Warning\" elements. See ?makePixPal for an example")
   }
 
