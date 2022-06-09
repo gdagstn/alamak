@@ -117,7 +117,7 @@ alamak <- function(f, pixpal = "Jerry"){
     }
         pal = pixpal$crayon
 
-        consolew = min(console_width() - 2 - ncol(pal), 100)
+        consolew = min(2*console_width() - 2 - ncol(pal), 100)
 
         introMessage = paste0(strwrap(pixpal$messages[[errtype]][sample(seq_len(length(pixpal$messages[[errtype]])), size = 1)], consolew), collapse = " \n")
 
