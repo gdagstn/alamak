@@ -48,9 +48,24 @@ There are 4 Pixel Pals (patent pending) available:
 
 You can create another Pixel Pal (patent pending) yourself! If you have a 16x16 (can be bigger but may distort the text on the screen) PNG file with transparency you can load it. As a reference, consider that every "pixel" is actually two whitespaces with a colored background, so a 32x32 picture will take up 64 spaces in size in the terminal. 
 
+You only need to make a list with the following elements:
+
+- `crayon`: the result of a call to `makePixelPal()` where the argument is the path to a PNG file
+- `messages`: a nested list containing two other lists:
+  - `Error`: a character vector of error messages
+  - `Warning`: a character vector of warning messages
+
 ```
 new_pixelpal = list("crayon" = makePixelPal("path/to/picture.png"),
-                    "messages" = c("The first possible message", "The second possible message", "And so on", "You know the drill"))
+                    "messages" = list(
+                    "Error" = c("The first possible message", 
+                                "The second possible message", 
+                                "And so on", 
+                                "You know the drill"),
+                     "Warning" = c("A warning message",
+                                   "Another warning message")
+                                  )
+                        )
 
 ```
 
