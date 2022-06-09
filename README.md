@@ -46,6 +46,11 @@ There are 4 Pixel Pals (patent pending) available:
 
 <img width="880" alt="Screenshot 2022-06-08 at 11 58 43 PM" src="https://user-images.githubusercontent.com/21171362/172663242-1bccfeaa-ad7f-4310-957d-22f48cc04aff.png">
 
+**E10N**, a no-nonsense robot from the not so distant future
+
+![e10nscreenshot](https://user-images.githubusercontent.com/21171362/172915909-36c7be7d-eec3-486c-bb78-2458565faca8.jpg)
+
+
 You can create another Pixel Pal (patent pending) yourself! If you have a 16x16 (can be bigger but may distort the text on the screen) PNG file with transparency you can load it. As a reference, consider that every "pixel" is actually two whitespaces with a colored background, so a 32x32 picture will take up 64 spaces in size in the terminal. 
 
 You only need to make a list with the following elements:
