@@ -1,11 +1,11 @@
 Package: alamak
 Type: Package
-Title: What the Package Does (Title Case)
-Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Title: error messages with some flair.
+Version: 0.0.900
+Author: Giuseppe D'Agostino
+Maintainer: Giuseppe D'Agostino <g.a.dagostino@gmail.com>
+Description: alamak captures errors and warnings from a function call and
+    delivers them to you with the help of a Pixel Pal.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true

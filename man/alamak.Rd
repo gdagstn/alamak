@@ -9,14 +9,16 @@ alamak(f, pixpal = "Jerry")
 \arguments{
 \item{f}{a function}
 
-\item{pixpal}{a pixel pal, one of "Lenny" (supportive velociraptor), "buster"
+\item{pixpal}{a Pixel Pal, one of "Lenny" (supportive velociraptor), "Buster"
 (cool lemon), "Jerry" (a parrot that hates you) and "Oniji" (Edo period
-Japanese kabuki actor who speaks in haiku only)}
+Japanese kabuki actor who speaks in haiku only). Alternatively, a Pixel
+Pal made following the instructions at \code{?makePixPal}.}
 }
 \value{
-the result of the function if there are no errors, otherwise
-    it displays the pixel pal with the message. Warnings are also displayed but
-    the result of the function is still returned.
+the output of \code{f} if there are no errors, otherwise
+    it displays the pixel pal with the (edited) message.
+    Warnings are also displayed, but the output of the function is still
+    returned.
 }
 \description{
 Catches an error or warning and lets a pixel pal tell you all about it

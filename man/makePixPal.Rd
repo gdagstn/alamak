@@ -21,4 +21,19 @@ fpath <- system.file("extdata", "buster.png", package="alamak")
 buster = makePixPal(fpath)
 cat(as.vector(t(buster)), sep = "")
 
+## To make a new Pixel Pal to be used with `alamak()`
+
+new_pixelpal = list("crayon" = makePixPal(fpath),
+    "messages" = list(
+      "Error" = c("The first possible message",
+                  "The second possible message",
+                  "And so on",
+                  "You know the drill"),
+      "Warning" = c("A warning message",
+                   "Another warning message")
+                    )
+                   )
+
+alamak(a + b, pixpal = new_pixelpal)
+
 }
