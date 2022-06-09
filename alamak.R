@@ -17,6 +17,21 @@
 #' buster = makePixPal(fpath)
 #' cat(as.vector(t(buster)), sep = "")
 #'
+#' ## To make a new Pixel Pal to be used with `alamak()`
+#'
+#' new_pixelpal = list("crayon" = makePixPal(fpath),
+#'     "messages" = list(
+#'       "Error" = c("The first possible message",
+#'                   "The second possible message",
+#'                   "And so on",
+#'                   "You know the drill"),
+#'       "Warning" = c("A warning message",
+#'                    "Another warning message")
+#'                     )
+#'                    )
+#'
+#' alamak(a + b, pixpal = new_pixelpal)
+#'
 #' @export
 
 makePixPal <- function(filepath) {
@@ -42,27 +57,38 @@ makePixPal <- function(filepath) {
 #' Catches an error or warning and lets a pixel pal tell you all about it
 #'
 #' @param f a function
-#' @param pixpal a pixel pal, one of "Lenny" (supportive velociraptor), "Buster"
+#' @param pixpal a Pixel Pal, one of "Lenny" (supportive velociraptor), "Buster"
 #'     (cool lemon), "Jerry" (a parrot that hates you) and "Oniji" (Edo period
-#'     Japanese kabuki actor who speaks in haiku only)
+#'     Japanese kabuki actor who speaks in haiku only). Alternatively, a Pixel
+#'     Pal made following the instructions at \code{?makePixPal}.
 #'
-#' @return the result of the function if there are no errors, otherwise
-#'     it displays the pixel pal with the message. Warnings are also displayed but
-#'     the result of the function is still returned.
+#' @return the output of \code{f} if there are no errors, otherwise
+#'     it displays the pixel pal with the (edited) message.
+#'     Warnings are also displayed, but the output of the function is still
+#'     returned.
 #'
 #' @examples
 #'
 #' alamak(a + 4)
 #'
-#' @importFrom crayon red reset
+#' @importFrom crayon red
 #'
 #' @export
 
 alamak <- function(f, pixpal = "Jerry"){
 
-  if(pixpal %in% c("Jerry", "Lenny", "Buster", "Oniji")) {
+  if(all(class(pixpal) == "character" & pixpal %in% c("Jerry", "Lenny", "Buster", "Oniji"))) {
     pixpal = pixpals[[pixpal]]
-  } else if(class(pixpal) != "list") stop("Not a valid Pixel Pal!")
+  } else if(class(pixpal) != "list") {
+    stop("Not a valid Pixel Pal! See ?makePixPal for an example.")
+  } else if(class(pixpal) == "list" &
+            !all(names(pixpal) %in% c("crayon", "messages"))) {
+    stop("Not a valid Pixel Pal! Needs \"crayon\" and \"messages\" elements. See ?makePixPal for an example")
+  } else if(class(pixpal) == "list" &
+            all(names(pixpal) %in% c("crayon", "messages")) &
+            !all(names(pixpal$messages) %in% c("Error", "Warning"))) {
+    stop("Not a valid Pixel Pal! Needs \"Error\" and \"Warning\" elements. See ?makePixPal for an example")
+  }
 
   warns = list()
   errs = list()
@@ -88,7 +114,7 @@ alamak <- function(f, pixpal = "Jerry"){
       errtype = "Warning"
       errmess = paste0(errtype, ": ", unlist(lapply(warns, function(x) x$message)))
     }
-        introMessage = paste0(strwrap(pixpal$messages[sample(seq_len(length(pixpal$messages)), size = 1)], 100), collapse = " \n")
+        introMessage = paste0(strwrap(pixpal$messages[[errtype]][sample(seq_len(length(pixpal$messages[[errtype]])), size = 1)], 100), collapse = " \n")
 
         errmess_wrapped = paste0(sapply(strwrap(errmess, 100), crayon::red, USE.NAMES = FALSE), collapse = "\n")
 
