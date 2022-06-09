@@ -20,6 +20,7 @@ You may think that in order to use `alamak` you need to know how to code. The op
 Wrap your call into a call to `alamak()`. If a warning or an error occurs, a Pixel Pal (patent pending) appears on the screen  and tells you what they think about you and your situation.
 
 ```
+library(alamak)
 alamak(your_function(), pixelpal = "Jerry")
 ```
 
