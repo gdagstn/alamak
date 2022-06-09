@@ -32,23 +32,23 @@ There are 4 Pixel Pals (patent pending) available:
 
 **Jerry**, a parrot who doesn't like you very much:
 
-<img width="725" alt="Screenshot 2022-06-08 at 11 51 14 PM" src="https://user-images.githubusercontent.com/21171362/172661506-462e4337-4efa-4bb2-98d3-38dba4cd3838.png">
+<img width="725" alt="Jerry the parrot" src="https://user-images.githubusercontent.com/21171362/172661506-462e4337-4efa-4bb2-98d3-38dba4cd3838.png">
 
 **Buster**, a cool lemon:
 
-<img width="545" alt="Screenshot 2022-06-08 at 11 56 53 PM" src="https://user-images.githubusercontent.com/21171362/172662859-6c0a51b5-a1ef-4273-a561-06e67e162e9b.png">
+<img width="545" alt="Buster the cool lemon" src="https://user-images.githubusercontent.com/21171362/172662859-6c0a51b5-a1ef-4273-a561-06e67e162e9b.png">
 
 **Lenny**, a supportive velociraptor who is also great with kids:
 
-<img width="628" alt="Screenshot 2022-06-08 at 11 57 35 PM" src="https://user-images.githubusercontent.com/21171362/172663016-cb6f8bd3-e470-488c-ab4a-8200db2cf258.png">
+<img width="628" alt="Lenny the raptor" src="https://user-images.githubusercontent.com/21171362/172663016-cb6f8bd3-e470-488c-ab4a-8200db2cf258.png">
 
 **Oniji**, an 18th century Japanese kabuki actor who only speaks in haiku:
 
-<img width="880" alt="Screenshot 2022-06-08 at 11 58 43 PM" src="https://user-images.githubusercontent.com/21171362/172663242-1bccfeaa-ad7f-4310-957d-22f48cc04aff.png">
+<img width="880" alt="Oniji the actor" src="https://user-images.githubusercontent.com/21171362/172663242-1bccfeaa-ad7f-4310-957d-22f48cc04aff.png">
 
 **E10N**, a no-nonsense robot from the not so distant future
 
-![e10nscreenshot](https://user-images.githubusercontent.com/21171362/172915909-36c7be7d-eec3-486c-bb78-2458565faca8.jpg)
+<img width="680" alt="E10N the robot" src="https://user-images.githubusercontent.com/21171362/172916192-58a0442a-ed9d-48e7-892c-10eb85265c6f.png">
 
 
 You can create another Pixel Pal (patent pending) yourself! If you have a 16x16 (can be bigger but may distort the text on the screen) PNG file with transparency you can load it. As a reference, consider that every "pixel" is actually two whitespaces with a colored background, so a 32x32 picture will take up 64 spaces in size in the terminal. 
