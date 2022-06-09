@@ -56,7 +56,7 @@ You only need to make a list with the following elements:
   - `Warning`: a character vector of warning messages
 
 ```
-new_pixelpal = list("crayon" = makePixelPal("path/to/picture.png"),
+new_pixelpal = list("crayon" = makePixPal("path/to/picture.png"),
                     "messages" = list(
                     "Error" = c("The first possible message", 
                                 "The second possible message", 
