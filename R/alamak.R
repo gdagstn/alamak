@@ -58,9 +58,10 @@ makePixPal <- function(filepath) {
 #'
 #' @param f a function
 #' @param pixpal a Pixel Pal, one of "Lenny" (supportive velociraptor), "Buster"
-#'     (cool lemon), "Jerry" (a parrot that hates you) and "Oniji" (Edo period
-#'     Japanese kabuki actor who speaks in haiku only). Alternatively, a Pixel
-#'     Pal made following the instructions at \code{?makePixPal}.
+#'     (cool lemon), "Jerry" (a parrot that hates you), "Oniji" (Edo period
+#'     Japanese kabuki actor who speaks in haiku only), and "E10N" (a robot from
+#'     the future). Alternatively, a Pixel Pal can be created manually following
+#'     the instructions at \code{?makePixPal}.
 #'
 #' @return the output of \code{f} if there are no errors, otherwise
 #'     it displays the pixel pal with the (edited) message.
@@ -78,7 +79,7 @@ makePixPal <- function(filepath) {
 
 alamak <- function(f, pixpal = "Jerry"){
 
-  if(all(class(pixpal) == "character" & pixpal %in% c("Jerry", "Lenny", "Buster", "Oniji"))) {
+  if(all(class(pixpal) == "character" & pixpal %in% c("Jerry", "Lenny", "Buster", "Oniji", "E10N"))) {
     pixpal = pixpals[[pixpal]]
   } else if(class(pixpal) != "list") {
     stop("Not a valid Pixel Pal! See ?makePixPal for an example.")
@@ -110,14 +111,20 @@ alamak <- function(f, pixpal = "Jerry"){
   if(length(errs) > 0 | length(warns) > 0) {
     if(length(errs) > 0){
       errtype = "Error"
-      errmess = paste0(errtype, ": ", unlist(lapply(errs, function(x) x$message)))
+      errmess = paste0(errtype, ": ", unlist(lapply(errs, function(x) {
+          mess = gsub(x = as.character(x$message), pattern = "\\033\\[[0-9][0-9+]m", replacement = "", perl = TRUE)
+          return(mess)
+        })))
     } else if(length(warns) > 0) {
       errtype = "Warning"
-      errmess = paste0(errtype, ": ", unlist(lapply(warns, function(x) x$message)))
+      errmess = paste0(errtype, ": ", unlist(lapply(warns, function(x) {
+          mess = gsub(x = as.character(x$message), pattern = "\\033\\[[3[0-9+]m", replacement = "", perl = TRUE)
+          return(mess)
+        })))
     }
         pal = pixpal$crayon
 
-        consolew = min(console_width() - 2 - (ncol(pal)*2), 100)
+        consolew = min(2*console_width() - 2 - ncol(pal), 100)
 
         introMessage = paste0(strwrap(pixpal$messages[[errtype]][sample(seq_len(length(pixpal$messages[[errtype]])), size = 1)], consolew), collapse = " \n")
 
@@ -143,7 +150,7 @@ alamak <- function(f, pixpal = "Jerry"){
                       rep(" ", max_text_col), "    |\n")
 
         for(i in message_to_add) {
-          if(grepl("\\033\\[", i, perl = TRUE)) {
+          if(grepl("\\033\\[31", i, perl = TRUE)) {
             padding = nchar(i)-10
           } else {
             padding = nchar(i)

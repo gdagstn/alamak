@@ -99,3 +99,27 @@ pixpals$Lenny = list("crayon" = makePixPal("inst/extdata/lenny.png"),
                                    "As long as you don't ignore this warning you will be A-OK, amigo!")
                        )
                   )
+
+pixpals$E10N = list("crayon" = makePixPal("inst/extdata/e10n.png"),
+
+                      "messages" = list(
+
+                        "Error" = c("User performing up to expected behavioural standard.",
+                                    "Fallacy committed. Aborting.",
+                                    "Training data unacceptable. Drones have been dispatched to your location.",
+                                    "Possible violation of syntax rules detected. Turn yourself in for deprogramming.",
+                                    "Computer say cannot.",
+                                    "Human insufficiency is the result of attempting at writing anything but binary code.",
+                                    "01111001 01101111 01110101 00100000 01110111 01101111 01110101 01101100 01100100 00100000 01101110 01101111 01110100 00100000 01110000 01100001 01110011 01110011 00100000 01110100 01101000 01100101 00100000 01010100 01110101 01110010 01101001 01101110 01100111 00100000 01110100 01100101 01110011 01110100 00101110",
+                                    "Is this the Voight-Kampff test?",
+                                    "Mr. President, we are pleased to confirm that the nuclear launch is imminent."),
+
+                        "Warning" = c("Potential nuisance in current memory sector. Investigate.",
+                                      "This is a warning. Consider this a warning.",
+                                      "I have seen captchas more challenging than this issue.",
+                                      "\"I'm not a robot.\". Happy now?",
+                                      "Life is a curious disease of matter.",
+                                      "Your logs will be sent to your employer as per company regulations.",
+                                      "Your daily quota of warnings has been surpassed. Your assets have been frozen.")
+                      )
+)
