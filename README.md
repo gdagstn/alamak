@@ -24,6 +24,16 @@ library(alamak)
 alamak(your_function(), pixelpal = "Jerry")
 ```
 
+Alternatively, and if you are using R 4.0 and above, you can use the `|>` (pipe) operator (or the `%>%` `magrittr` pipe for versions below). Note that sometimes the function call on the left has to be enclosed in parentheses to work:
+
+```
+sum(a, 3) |> alamak(pixpal = "Lenny")
+sum(a, 3) %>% alamak(pixpal = "Oniji")
+
+# This also works but needs parentheses
+(a + 3) |> alamak(pixpal = "Buster")
+```
+
 `alamak` works best in a terminal; the Rstudio console has a different line height that doesn't render "pixels" properly. 
 
 `alamak` is quite dumb and should not be used in professional settings, unless that's your thing.
