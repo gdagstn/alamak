@@ -38,7 +38,9 @@ sum(a, 3) %>% alamak(pixpal = "Oniji")
 
 `alamak` is quite dumb and should not be used in professional settings, unless that's your thing.
 
-There are 4 Pixel Pals (patent pending) available:
+# Pixel Pals
+
+There are 5 Pixel Pals (patent pending) available:
 
 **Jerry**, a parrot who doesn't like you very much:
 
