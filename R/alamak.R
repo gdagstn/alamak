@@ -4,11 +4,13 @@
 #' Generates a pixel pal from a PNG file
 #'
 #' @param filepath a character indicating a path to a .PNG file.
+#' @param compress logical, should the Pixel Pal be compressed to take up fewer
+#'    spaces in the terminal? Default is TRUE.
 #'
 #' @return a character string converted to color ASCII through \code{crayon}
 #'
 #' @importFrom png readPNG
-#' @importFrom crayon make_style
+#' @importFrom crayon make_style combine_styles
 #' @importFrom grDevices rgb
 #'
 #' @examples
@@ -34,7 +36,7 @@
 #'
 #' @export
 
-makePixPal <- function(filepath) {
+makePixPal <- function(filepath, compress = TRUE) {
 
   pix = readPNG(filepath, native = FALSE)
 
@@ -42,13 +44,17 @@ makePixPal <- function(filepath) {
 
   pix = matrix(pixcols, nrow = dim(pix)[1], byrow = TRUE)
 
-  crayonstrings <- matrix(
-    unlist(sapply(pixcols, function(x) {
-           make_style(x, bg = TRUE)("  ")})),
-    nrow = nrow(pix))
+  if(compress) {
+    crayonstrings <- compressPixPal(pix)
+  } else {
+    crayonstrings <- matrix(
+      unlist(sapply(pixcols, function(x) {
+        make_style(x, bg = TRUE)("  ")})),
+      nrow = nrow(pix))
 
-  crayonstrings[t(pix) == "#00000000"] = "  "
-  crayonstrings[,ncol(crayonstrings)] <- paste(crayonstrings[,ncol(crayonstrings)], "\n", sep = "")
+    crayonstrings[t(pix) == "#00000000"] = "  "
+    crayonstrings[,ncol(crayonstrings)] <- paste(crayonstrings[,ncol(crayonstrings)], "\n", sep = "")
+  }
   return(crayonstrings)
 }
 
@@ -70,7 +76,14 @@ makePixPal <- function(filepath) {
 #'
 #' @examples
 #'
+#' # Error message
 #' alamak(a + 4)
+#'
+#' # Warning message
+#' alamak(as.numeric("alamak"))
+#'
+#' # Change Pixel Pal
+#' alamak(as.numeric("alamak"), "Lenny")
 #'
 #' @importFrom crayon red
 #' @importFrom cli console_width
@@ -79,6 +92,7 @@ makePixPal <- function(filepath) {
 
 alamak <- function(f, pixpal = "Jerry"){
 
+  # Input checks
   if(all(class(pixpal) == "character" & pixpal %in% c("Jerry", "Lenny", "Buster", "Oniji", "E10N"))) {
     pixpal = pixpals[[pixpal]]
   } else if(class(pixpal) != "list") {
@@ -92,36 +106,37 @@ alamak <- function(f, pixpal = "Jerry"){
     stop("Not a valid Pixel Pal! Needs \"Error\" and \"Warning\" elements. See ?makePixPal for an example")
   }
 
-  warns = list()
-  errs = list()
+  #Error catching
+  warnings = list()
+  errors = list()
 
   out <- tryCatch(withCallingHandlers(
                expr = f,
-
                warning = function(w) {
-                 warns <<- c(warns, list(w))
-                 invokeRestart("muffleWarning")
-               }),
-
+                 warnings <<- c(warnings, list(w))
+                 invokeRestart("muffleWarning")}),
                error = function(e) {
-                 errs <<- c(errs, list(e))
-               }
+                 errors <<- c(errors, list(e))}
              )
 
-  if(length(errs) > 0 | length(warns) > 0) {
-    if(length(errs) > 0){
+  if(length(errors) > 0 | length(warnings) > 0) {
+
+    if(length(errors) > 0){
       errtype = "Error"
-      errmess = paste0(errtype, ": ", unlist(lapply(errs, function(x) {
+      errmess = paste0(errtype, ": ", unlist(lapply(errors, function(x) {
           mess = gsub(x = as.character(x$message), pattern = "\\033\\[[0-9][0-9+]m", replacement = "", perl = TRUE)
           return(mess)
         })))
-    } else if(length(warns) > 0) {
+    } else if(length(warnings) > 0) {
       errtype = "Warning"
-      errmess = paste0(errtype, ": ", unlist(lapply(warns, function(x) {
+      errmess = paste0(errtype, ": ", unlist(lapply(warnings, function(x) {
           mess = gsub(x = as.character(x$message), pattern = "\\033\\[[3[0-9+]m", replacement = "", perl = TRUE)
           return(mess)
         })))
     }
+
+    # Message wrangling
+
         pal = pixpal$crayon
 
         consolew = min(2*console_width() - 2 - ncol(pal), 100)
@@ -143,11 +158,8 @@ alamak <- function(f, pixpal = "Jerry"){
 
         max_text_col = column_sizes[max_col_size]
 
-        #print(max_text_col)
-        #print(message_to_add[1])
-
-        finalmess = c(" ", rep("_", max_text_col), "____\n|",
-                      rep(" ", max_text_col), "    |\n")
+        finalmess = c("\u250c", rep("\u2500", max_text_col + 3), "\u2510\n\u2502",
+                      rep(" ", max_text_col), "   \u2502\n")
 
         for(i in message_to_add) {
           if(grepl("\\033\\[31", i, perl = TRUE)) {
@@ -156,11 +168,12 @@ alamak <- function(f, pixpal = "Jerry"){
             padding = nchar(i)
           }
             finalmess = c(finalmess,
-                          "|  ", i,
-                          rep(" ", max_text_col - padding), "  |\n")
+                          "\u2502  ", i,
+                          rep(" ", max_text_col - padding), " \u2502\n")
           }
 
-       finalmess = c(finalmess, "|_", rep("_", max_text_col), "___|\n")
+       finalmess = c(finalmess, "\u2502", rep(" ", max_text_col + 3), "\u2502\n",
+                                "\u2514", rep("\u2500", max_text_col + 3), "\u2518\n")
 
        finalmess_print = unlist(strsplit(paste0(finalmess, collapse = ""), split = "\n"))
 
@@ -168,7 +181,7 @@ alamak <- function(f, pixpal = "Jerry"){
        if(difference > 0) {
          pal = rbind(pal,
                      do.call(rbind,
-                             lapply(seq_len(difference), function(x) c(rep("  ", ncol(pal)-1), "  \n"))
+                             lapply(seq_len(difference), function(x) c(rep(" ", ncol(pal)-1), "\n"))
                              )
          )
          }
@@ -181,12 +194,71 @@ alamak <- function(f, pixpal = "Jerry"){
          crayonmap_with_message[right_lines[i]] = gsub(x = crayonmap[right_lines[i]],
                                                        pattern = "\n",
                                                        replacement =  paste0("   ", finalmess_print[i], "\n"))
-         }
-       cat(crayonmap_with_message, sep = "")
+       }
+
+       # Printing
+       cat("\n", crayonmap_with_message, "\n", sep = "")
   }
 
-  if(length(errs) == 0) return(out)
+  if(length(errors) == 0) return(out)
 
+}
+
+
+#' Compress a pixel pal
+#'
+#' Compresses a pixel pal using Unicode Blocks
+#'
+#' @param pix a character indicating a path to a .PNG file.
+#'
+#' @return returns a compressed Pixel Pal character matrix that occupies half the
+#'     space in the terminal
+#'
+#' @details Internal use only. Note: the Apple Terminal does not deal well with
+#'     Unicode blocks. When the  package is loaded, if Apple Terminal is detected,
+#'     compression is disabled.
+#'
+#' @references kindly suggested in https://github.com/gdagstn/alamak/issues/2
+#'     by Trevor L. Davis
+#'
+#' @importFrom crayon make_style combine_styles
+
+compressPixPal <- function(pix){
+
+  pix = t(pix)
+
+  complist = list()
+
+  for(i in seq(1,nrow(pix), by = 2)) {
+
+    two_rows = t(pix[i:(i + 1),])
+
+    compressed = apply(two_rows, 1, function(x) {
+
+      if(x[1] == "#00000000" & x[2] != "#00000000") {
+          background1 = FALSE
+          x[1] = x[2]
+          pixel_char = "\u2584"
+        } else  if(x[1] != "#00000000" & x[2] == "#00000000") {
+          x[2] = x[1]
+          background1 = FALSE
+          pixel_char = "\u2580"
+        } else if(x[1] == "#00000000" & x[2] == "#00000000"){
+          background1 = FALSE
+          pixel_char = " "
+        } else  if(x[1] != "#00000000" & x[2] != "#00000000"){
+          background1 = TRUE
+          pixel_char = "\u2584"
+        }
+
+        combine_styles(make_style(x[1], bg = background1),
+                       make_style(x[2], bg = FALSE))(pixel_char)
+    })
+
+    complist[[i]] = c(compressed, "\n")
+
+  }
+  return(do.call(rbind, complist[!is.null(complist)]))
 }
 
 

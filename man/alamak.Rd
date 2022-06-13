@@ -10,9 +10,10 @@ alamak(f, pixpal = "Jerry")
 \item{f}{a function}
 
 \item{pixpal}{a Pixel Pal, one of "Lenny" (supportive velociraptor), "Buster"
-(cool lemon), "Jerry" (a parrot that hates you) and "Oniji" (Edo period
-Japanese kabuki actor who speaks in haiku only). Alternatively, a Pixel
-Pal made following the instructions at \code{?makePixPal}.}
+(cool lemon), "Jerry" (a parrot that hates you), "Oniji" (Edo period
+Japanese kabuki actor who speaks in haiku only), and "E10N" (a robot from
+the future). Alternatively, a Pixel Pal can be created manually following
+the instructions at \code{?makePixPal}.}
 }
 \value{
 the output of \code{f} if there are no errors, otherwise
@@ -25,6 +26,13 @@ Catches an error or warning and lets a pixel pal tell you all about it
 }
 \examples{
 
+# Error message
 alamak(a + 4)
+
+# Warning message
+alamak(as.numeric("alamak"))
+
+# Change Pixel Pal
+alamak(as.numeric("alamak"), "Lenny")
 
 }
