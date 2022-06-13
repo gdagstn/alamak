@@ -68,6 +68,8 @@ makePixPal <- function(filepath, compress = TRUE) {
 #'     Japanese kabuki actor who speaks in haiku only), and "E10N" (a robot from
 #'     the future). Alternatively, a Pixel Pal can be created manually following
 #'     the instructions at \code{?makePixPal}.
+#' @param compress logical, should the compressed Pixel Pals be used? Only valid
+#'     if using internal Pixel Pals specified above.
 #'
 #' @return the output of \code{f} if there are no errors, otherwise
 #'     it displays the pixel pal with the (edited) message.
@@ -90,11 +92,15 @@ makePixPal <- function(filepath, compress = TRUE) {
 #'
 #' @export
 
-alamak <- function(f, pixpal = "Jerry"){
+alamak <- function(f, pixpal = "Jerry", compress = TRUE){
 
   # Input checks
   if(all(class(pixpal) == "character" & pixpal %in% c("Jerry", "Lenny", "Buster", "Oniji", "E10N"))) {
-    pixpal = pixpals[[pixpal]]
+    if(compress){
+      pixpal = pixpals_compressed[[pixpal]]
+    } else {
+      pixpal = pixpals_uncompressed[[pixpal]]
+    }
   } else if(class(pixpal) != "list") {
     stop("Not a valid Pixel Pal! See ?makePixPal for an example.")
   } else if(class(pixpal) == "list" &

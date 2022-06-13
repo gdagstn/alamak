@@ -4,7 +4,7 @@
 \alias{alamak}
 \title{alamak!}
 \usage{
-alamak(f, pixpal = "Jerry")
+alamak(f, pixpal = "Jerry", compress = TRUE)
 }
 \arguments{
 \item{f}{a function}
@@ -14,6 +14,9 @@ alamak(f, pixpal = "Jerry")
 Japanese kabuki actor who speaks in haiku only), and "E10N" (a robot from
 the future). Alternatively, a Pixel Pal can be created manually following
 the instructions at \code{?makePixPal}.}
+
+\item{compress}{logical, should the compressed Pixel Pals be used? Only valid
+if using internal Pixel Pals specified above.}
 }
 \value{
 the output of \code{f} if there are no errors, otherwise

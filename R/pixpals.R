@@ -1,10 +1,11 @@
 #' Code to create initial Pixel Pals
 #' Sourced on loading
-
+compression = FALSE
 pixpals = list()
 
-term = Sys.getenv("TERM_PROGRAM")
-if(term == "Apple_Terminal") compression = FALSE else compression = TRUE
+#term = Sys.getenv("TERM_PROGRAM")
+#if(term == "Apple_Terminal") compression = FALSE else compression = TRUE
+
 
 pixpals$Buster = list("crayon" = makePixPal("inst/extdata/buster.png", compress = compression),
 
