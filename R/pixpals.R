@@ -1,6 +1,12 @@
+#' Code to create initial Pixel Pals
+#' Sourced on loading
+
 pixpals = list()
 
-pixpals$Buster = list("crayon" = makePixPal("inst/extdata/buster.png"),
+term = Sys.getenv("TERM_PROGRAM")
+if(term == "Apple_Terminal") compression = FALSE else compression = TRUE
+
+pixpals$Buster = list("crayon" = makePixPal("inst/extdata/buster.png", compress = compression),
 
                          "messages" = list(
 
@@ -23,7 +29,7 @@ pixpals$Buster = list("crayon" = makePixPal("inst/extdata/buster.png"),
                             )
                       )
 
-pixpals$Jerry = list("crayon" = makePixPal("inst/extdata/jerry.png"),
+pixpals$Jerry = list("crayon" = makePixPal("inst/extdata/jerry.png", compress = compression),
 
                      "messages" = list(
 
@@ -52,7 +58,7 @@ pixpals$Jerry = list("crayon" = makePixPal("inst/extdata/jerry.png"),
                       )
                      )
 
-pixpals$Oniji = list("crayon" = makePixPal("inst/extdata/oniji.png"),
+pixpals$Oniji = list("crayon" = makePixPal("inst/extdata/oniji.png", compress = compression),
 
                      "messages" = list(
                        "Error" = c("A single function / Mysterious operations / It has failed again.",
@@ -73,7 +79,7 @@ pixpals$Oniji = list("crayon" = makePixPal("inst/extdata/oniji.png"),
                      )
 
 
-pixpals$Lenny = list("crayon" = makePixPal("inst/extdata/lenny.png"),
+pixpals$Lenny = list("crayon" = makePixPal("inst/extdata/lenny.png", compress = compression),
 
                      "messages" = list(
                        "Error" = c("You got this!",
@@ -100,7 +106,7 @@ pixpals$Lenny = list("crayon" = makePixPal("inst/extdata/lenny.png"),
                        )
                   )
 
-pixpals$E10N = list("crayon" = makePixPal("inst/extdata/e10n.png"),
+pixpals$E10N = list("crayon" = makePixPal("inst/extdata/e10n.png", compress = compression),
 
                       "messages" = list(
 

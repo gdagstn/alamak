@@ -4,10 +4,13 @@
 \alias{makePixPal}
 \title{Make a pixel pal}
 \usage{
-makePixPal(filepath)
+makePixPal(filepath, compress = TRUE)
 }
 \arguments{
 \item{filepath}{a character indicating a path to a .PNG file.}
+
+\item{compress}{logical, should the Pixel Pal be compressed to take up fewer
+spaces in the terminal? Default is TRUE.}
 }
 \value{
 a character string converted to color ASCII through \code{crayon}
