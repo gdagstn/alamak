@@ -34,7 +34,16 @@ sum(a, 3) %>% alamak(pixpal = "Oniji")
 (a + 3) |> alamak(pixpal = "Buster")
 ```
 
-`alamak` works best in a terminal; the Rstudio console has a different line height that doesn't render "pixels" properly. 
+`alamak()` displays compressed Pixel Pals by default. Compression saves space, but in some terminals it does not work well. You can disable it by adding
+`compress = FALSE` to the `alamak()` arguments.
+
+The Rstudio console default theme (TextMate) has a line height that doesn't render "pixels" properly. To fix this you can edit the .rstheme file by adding this element:
+
+```
+#rstudio_console_output {
+    line-height: 1.2 !important;
+}
+```
 
 `alamak` is quite dumb and should not be used in professional settings, unless that's your thing.
 
@@ -72,8 +81,10 @@ You only need to make a list with the following elements:
   - `Error`: a character vector of error messages
   - `Warning`: a character vector of warning messages
 
+You can choose whether you want the Pixel Pal to be compressed or not.
+
 ```
-new_pixelpal = list("crayon" = makePixPal("path/to/picture.png"),
+new_pixelpal = list("crayon" = makePixPal("path/to/picture.png", compress = TRUE),
                     "messages" = list(
                     "Error" = c("The first possible message", 
                                 "The second possible message", 
@@ -95,3 +106,4 @@ alamak(your_function(), new_pixelpal)
 # Acknowledgements
 - Gábor Csárdi for the `crayon` package
 - Simon Urbanek for the `png` package
+- Trevor L. Davis for suggestions on compression using Unicode Blocks
