@@ -3,7 +3,7 @@
 # alamak
 `alamak` catches your errors and lets a Pixel Pal (patent pending) tell you all about it. 
 
-The name comes from the Singlish/Malay expression "alamak!", which is an exclamation that follows a surprising/unsettling event, or a minor nuisance, according to the vibe.
+The name comes from the Singlish/Malay expression ["alamak!"](https://en.wiktionary.org/wiki/alamak), which is an exclamation that follows a surprising/unsettling event, or a minor nuisance, according to the vibe.
 
 # Install
 
