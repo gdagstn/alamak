@@ -1,6 +1,12 @@
 <img src="https://user-images.githubusercontent.com/21171362/172660668-a915837a-7724-4499-9bc9-52478d8fe36f.png" align="right" alt="" width="150" />
+<div id="toc">
+	<ul align="left" style="list-style: none;">
+		<summary>
+			<h1>alamak</h1>
+		</summary>
+	</ul>
+</div>
 
-# alamak
 `alamak` catches your errors and lets a Pixel Pal (patent pending) tell you all about it. 
 
 The name comes from the Singlish/Malay expression ["alamak!"](https://en.wiktionary.org/wiki/alamak), which is an exclamation that follows a surprising/unsettling event, or a minor nuisance, according to the vibe.
